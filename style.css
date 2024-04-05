@@ -1,7 +1,8 @@
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 0;    
+    box-sizing: border-box; /* Includes padding in the width calculation */
     line-height: 1.6;
     color: #333;
     width: 100%;
@@ -15,7 +16,7 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('./images/chinesetropical.webp') no-repeat center center;
+    background: url('./images/chinesetropical.webp') no-repeat center center fixed;
     background-size: cover; /* Cover the entire page */
     opacity: 0.70; /* 70% opacity */
     z-index: -1; /* Ensure the background is behind other content */
@@ -25,6 +26,7 @@ body::before {
     background-color: #555;
     overflow: hidden;
     position: sticky;
+    opacity: 0.8; /* You might need an extra container for opacity since setting it on body will affect all child elements */
     top: 0;
 }
 
@@ -53,34 +55,58 @@ body::before {
     background-color: #ddd;
     color: black;
 }
-
 .header {
     background-color: #f4f4f4;
     text-align: center;
-    padding: 20px;
+    padding: 3px;
+    opacity: 1.0; /* Opacity is fine as is */
+    width: 100%; /* Ensures it takes up all the available width in its container */
+    box-sizing: border-box; /* Includes padding in the width calculation */
+    margin: 0 auto; /* Removes any default margin and centers the element if it's not already 100% width */
 }
+
 
 .content {
-    text-align: center;
-    padding: 20px;
+    text-align: center;    
+    padding: 20px;   
+    opacity: 1.0; /* You might need an extra container for opacity since setting it on body will affect all child elements */
+
 }
 
-.intro img, #Certifications img {
+.introimg{
+    text-align: center;  
     max-width: 100%;
     height: auto;
     padding: 10px;
 }
-
-@media only screen and (max-aspect-ratio: 1/1) {
+@media screen and (orientation: portrait) {
     /* Styles for portrait orientation */
     #navbar ul {
         flex-direction: column;
     }
+    body::before {
+        background-image: url('./images/chinesetropical_vert.webp'); /* Override with portrait image */
+    }
 }
 
-@media only screen and (min-aspect-ratio: 1/1) {
+@media screen and (orientation: landscape) {
     /* Styles for landscape orientation */
     #navbar ul {
         flex-direction: row;
     }
+}
+
+.iframe-container {
+  position: relative;
+  width: 70%;
+  padding-top: 39.25%; /* This percentage gives an aspect ratio close to 16:9 for the original iframe size */
+  margin: auto; /* This will center the container if you want it centered */
+}
+
+.iframe-container iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 }
