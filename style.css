@@ -9,14 +9,14 @@ body {
 #background {
     content: '';
     position: fixed;
+    background-size: cover;
     width: 100%;
     height: 100vh;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('./images/chinesetropical.webp');
-    background-size: cover;
+    background: url('./images/chinesetropical.webp') no-repeat center center fixed;
     opacity: 0.70;
     z-index: -1;
 }
@@ -41,6 +41,7 @@ body {
     margin: 2px;
 }
 
+
 #navbar li a {
     display: block;
     color: white;
@@ -59,23 +60,24 @@ body {
     background-color: #f4f4f4;
     text-align: center;
     width: 100%;
-    padding: 10;
-    margin: 10 auto;
+    margin: 30px auto;  /* Specified 'px' for top and bottom margins, 'auto' centers horizontally */
 }
 
 .content {
     text-align: center;
+    width: 100%;
+    max-width: 100%;
 }
 
-#certimg{
-    width: 30%;
+.certimg{
+    width: 20%;
     display: block;
     height: auto;
     margin: 0 auto;
 }
 
-#profileimg {
-    width: 70%;
+.profileimg{
+    width: 30%;
     display: block;
     height: auto;
     margin: 0 auto;
@@ -87,17 +89,24 @@ body {
     }
 
     #background {
-        background-image: url('./images/chinesetropical_vert.webp');
+        background-image: url('./images/chinesetropical_vert.webp') no-repeat center center fixed;
+    }
+
+    .certimg{
+        width: 40%;
+        display: block;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .profileimg{
+        width: 50%;
     }
 }
 
 @media screen and (orientation: landscape) {
     #navbar ul {
         flex-direction: row;
-    }
-
-    #profileimg {
-        width: 30%;
     }
 }
 

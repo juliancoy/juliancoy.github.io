@@ -1,0 +1,6 @@
+[submodule "hands"]
+	path = hands
+	url = https://github.com/julianfl0w/hands
+[submodule "attendjs"]
+	path = attendjs
+	url = https://github.com/julianfl0w/attendjs
