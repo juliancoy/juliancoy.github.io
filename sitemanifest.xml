@@ -1,0 +1,530 @@
+<?xml version="1.0" ?>
+<sitemanifest>
+    <file name="style.css">
+        <lastmod>2024-04-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <file name=".gitmodules">
+        <lastmod>2024-04-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <file name=".gitignore">
+        <lastmod>2024-04-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <file name="android-chrome-192x192.png">
+        <lastmod>2024-04-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <file name="nginx.sh">
+        <lastmod>2024-03-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <directory name="images">
+        <file name="github.png">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="attendjs.png">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="julian_square.png">
+            <lastmod>2024-04-05</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="julian.png">
+            <lastmod>2024-04-05</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="aws_saa.png">
+            <lastmod>2024-04-05</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="bcc.jpg">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="chinesetropical.webp">
+            <lastmod>2024-04-05</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="openstreamhdl.png">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="hands.png">
+            <lastmod>2024-04-09</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="ltransform.png">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="deism.png">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="mandle.png">
+            <lastmod>2024-04-22</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="bcc_transparent.png">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="pspo.png">
+            <lastmod>2024-04-05</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="mandle_transparent.png">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="bodypix.png">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="chinesetropical_vert.webp">
+            <lastmod>2024-04-05</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+    </directory>
+    <file name="site.webmanifest">
+        <lastmod>2024-04-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <file name="nginx.conf">
+        <lastmod>2024-04-22</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <file name="index.html">
+        <lastmod>2024-04-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <directory name="audio">
+        <file name="sineWaveProcessor.js">
+            <lastmod>2024-04-12</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="index.html">
+            <lastmod>2024-04-12</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="sound.js">
+            <lastmod>2024-04-12</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+    </directory>
+    <file name="favicon-32x32.png">
+        <lastmod>2024-04-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <file name="script.js">
+        <lastmod>2024-04-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <file name="apple-touch-icon.png">
+        <lastmod>2024-04-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <file name="favicon-16x16.png">
+        <lastmod>2024-04-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <directory name="hands">
+        <file name="LICENSE">
+            <lastmod>2024-04-22</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name=".gitignore">
+            <lastmod>2024-04-22</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="README.md">
+            <lastmod>2024-04-22</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="nginx.sh">
+            <lastmod>2024-04-22</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="nginx.conf">
+            <lastmod>2024-04-22</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="index.html">
+            <lastmod>2024-04-22</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <directory name="css">
+            <file name="style.css">
+                <lastmod>2024-04-22</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+        </directory>
+        <directory name="js">
+            <file name="script.js">
+                <lastmod>2024-04-22</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="soundSynthesis.js">
+                <lastmod>2024-04-22</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+        </directory>
+        <file name="hands.py">
+            <lastmod>2024-04-22</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name=".gitattributes">
+            <lastmod>2024-04-22</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+    </directory>
+    <file name="CNAME">
+        <lastmod>2024-04-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <file name="android-chrome-512x512.png">
+        <lastmod>2024-04-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <file name="favicon.ico">
+        <lastmod>2024-04-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <directory name="attendjs">
+        <file name="style.css">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="LICENSE">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name=".gitignore">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="manifest.json">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="README.md">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="index.html">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="script.js">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <file name="createManifest.sh">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+        <directory name="names">
+            <directory name="Micaela Cunha">
+                <file name="Code &amp; Coffee RWC-23.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="cac-intro-micaelawindow.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="1669909648057.jpeg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+            </directory>
+            <directory name="Valentine Okundaye">
+                <file name="kombucha-1.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="1706190733894.jpeg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="val1.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="PXL_20240113_203136460.MP~2.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+            </directory>
+            <directory name="Joshua Adams">
+                <file name="1686576965478.jpeg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="cac-drum-glasses.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="cac-chat-overhead.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+            </directory>
+            <directory name="Chase Farmer">
+                <file name="1614101887710.jpeg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="chase1.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="chase2.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+            </directory>
+            <directory name="Julian Loiacono">
+                <file name="20231012_093024.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="julian2.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="20240218_192341.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="julian1.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+            </directory>
+            <directory name="Tyrell Thomas">
+                <file name="1698775238079.jpeg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="tyrell1.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+            </directory>
+            <directory name="elliott ditman">
+                <file name="Code &amp; Coffee RWC-29.jpg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="1695956247439.jpeg">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="Screenshot_2024-02-23_23-32-06.png">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+            </directory>
+            <directory name="Joseph Loiacono">
+                <file name="josephloiacono2.png">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+                <file name="josephloiacono.png">
+                    <lastmod>2024-04-23</lastmod>
+                    <changefreq>monthly</changefreq>
+                    <priority>0.5</priority>
+                </file>
+            </directory>
+        </directory>
+        <directory name="models">
+            <file name="ssd_mobilenetv1_model-shard2">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="face_recognition_model-weights_manifest.json">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="ssd_mobilenetv1_model-weights_manifest.json">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="tiny_face_detector_model-weights_manifest.json">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="mtcnn_model-weights_manifest.json">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="face_expression_model-weights_manifest.json">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="face_landmark_68_tiny_model-shard1">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="face_expression_model-shard1">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="face_landmark_68_model-weights_manifest.json">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="face_landmark_68_tiny_model-weights_manifest.json">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="face_recognition_model-shard2">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="mtcnn_model-shard1">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="face_landmark_68_model-shard1">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="ssd_mobilenetv1_model-shard1">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="face_recognition_model-shard1">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="tiny_face_detector_model-shard1">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="age_gender_model-weights_manifest.json">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+            <file name="age_gender_model-shard1">
+                <lastmod>2024-04-23</lastmod>
+                <changefreq>monthly</changefreq>
+                <priority>0.5</priority>
+            </file>
+        </directory>
+        <file name="face-api.min.js">
+            <lastmod>2024-04-23</lastmod>
+            <changefreq>monthly</changefreq>
+            <priority>0.5</priority>
+        </file>
+    </directory>
+    <file name="seo.py">
+        <lastmod>2024-04-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+    <file name="sitemanifest.xml">
+        <lastmod>2024-04-23</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </file>
+</sitemanifest>
