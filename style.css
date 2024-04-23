@@ -93,14 +93,14 @@ body {
     }
 
     .certimg{
-        width: 40%;
+        width: 80%;
         display: block;
         height: auto;
         margin: 0 auto;
     }
 
     .profileimg{
-        width: 50%;
+        width: 80%;
     }
 }
 
