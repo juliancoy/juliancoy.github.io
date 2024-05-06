@@ -1,129 +1,333 @@
-body {
-    font-family: 'Open Sans', sans-serif;
+:root{
+    --grow-factor: 10;
+}
+*{
+    box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6{
     margin: 0;
-    padding: 0;
+}
+.flex{
+    display: flex;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
     line-height: 1.6;
     color: #333;
-}
-
-#background {
-    content: '';
-    position: fixed;
-    background-size: cover;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('./images/chinesetropical.webp') no-repeat center center fixed;
-    opacity: 0.70;
-    z-index: -1;
-}
-
-#navbar {
-    background-color: #555;
-    overflow: hidden;
-    position: sticky;
-    top: 0;
-}
-
-#navbar ul {
-    list-style-type: none;
+    background-image: url('https://julianloiacono.com/images/chinesetropical.webp');
+    background-attachment: fixed;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
 }
-
-#navbar li {
-    margin: 2px;
+.container{
+    background-color: rgba(0,0,0,.4)
 }
-
-
-#navbar li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-#navbar li a:hover,
-#navbar li a.active {
-    background-color: #ddd;
-    color: black;
-}
-
-.header {
-    background-color: #f4f4f4;
-    text-align: center;
-    width: 100%;
-    margin: 30px auto;  /* Specified 'px' for top and bottom margins, 'auto' centers horizontally */
-}
-
-.content {
-    text-align: center;
-    width: 100%;
+img{
     max-width: 100%;
 }
-
-.certimg{
-    width: 20%;
-    display: block;
-    height: auto;
+main{
+    max-width: 100%;
+    background-color: rgba(0,0,0,.8);
     margin: 0 auto;
+    padding: 60px 120px;
 }
 
-.profileimg{
-    width: 30%;
-    display: block;
-    height: auto;
-    margin: 0 auto;
+header{
+    justify-content: flex-end;
+    background-color: #1e1e1e;
+    padding-right: 20px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
-
-@media screen and (orientation: portrait) {
-    #navbar ul {
-        flex-direction: column;
-    }
-
-    #background {
-        background-image: url('./images/chinesetropical_vert.webp') no-repeat center center fixed;
-    }
-
-    .certimg{
-        width: 80%;
-        display: block;
-        height: auto;
-        margin: 0 auto;
-    }
-
-    .profileimg{
-        width: 80%;
-    }
+header nav{
+    margin: 0;
 }
-
-@media screen and (orientation: landscape) {
-    #navbar ul {
-        flex-direction: row;
-    }
+header ul{
+    margin: 0 25px;
+    gap: 25px;
 }
-
-.iframe-container {
+header a{
+    color: #fff;
+    text-decoration: none;
+}
+header li:hover a{
+    color: #000;
+}
+header li{
+    list-style-type: none;
+    padding: 25px 0;
+}
+header li:hover{
+    color: #000;
+    background-color: #ddd;
+}
+#landing{
+  padding: 20px; 
+  flex-direction: column;
+  gap: 50px; 
+}
+.landing-top{
+    align-items: center;
+    gap: 20px;
+}
+#landing h1{
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+}
+.first-name, .last-name{
+    display: block
+}
+.first-name{
+    font-size: 200px;
+    line-height: 180px;
+}
+.last-name{
+    font-size: 130px;
     position: relative;
-    width: 70%;
-    /* Adjust this width as needed */
-    margin: 0 auto;
-    /* Centers the container */
-    padding-top: 39.25%;
-    /* Aspect ratio for the iframe */
+    line-height: 130px;
+}
+.profileimg{
+    width: 300px;
+    height: 300px; 
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: rgba(255,255,10,.1);
+    object-position: 0px 0px;
+}
+.profileimg:hover{
+    background-color: rgba(255,255,10,.2);
+}
+.tile-container{
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.tile{
+    flex: 1;
+    padding: 20px 20px 40px;
+    min-height: 350px;
+    max-width: 1000px;
+    opacity: .6;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.tile:hover{
+    cursor: pointer;
+    opacity: 1;   
+}
+.tile h2{
+    font-size: 70px;
+    font-weight: 100;
+}
+.tile .content{
+    display: none;
+    flex-wrap: wrap;;
+}
+.tile.certifications-tile .content img{
+    width: 200px;
+}
+.certifications-tile .content{
+    gap: 40px;
+}
+.tile .content img{
+    width: 150px;
+}
+.grow .content{
+    display: flex;
+}
+.grow{
+    animation-name: grow;
+    animation-duration: 1.3s; 
+    animation-fill-mode: forwards;
+}
+@keyframes grow {
+    0%{flex: 1}
+    100%{flex: var(--grow-factor)}
+}
+.shrink{
+    animation-name: shrink;
+    animation-duration: .3s; 
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+@keyframes shrink {
+    0%{flex: var(--grow-factor)}
+    100%{flex: 1}
+}
+.certifications-tile{
+    background-color: rgb(186,255,201)
+}
+.projects-tile{
+    background-color: rgb(255,223,186);
+}
+.talks-tile{
+    background-color: rgb(186,225,255);
+}
+.talks-tile .content{
+    gap: 10px; 
+}
+.hide-text{
+    font-size: 0;
+    line-height: 0;
+    color: rgba(0,0,0,0)
+}
+.project-container{
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+.project{
+    /* flex: 1; */
+    width: 150px;
+    min-height: 150px;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, .05);
+    justify-content: center;
+    align-items: center;
+    padding: 35px;
+    text-align: center;
+    border: 1px solid black;
 }
 
-.iframe-container iframe {
+.project p{
+    max-width: 400px;
+}
+.project:hover{
+    background-color: rgb(186,255,201);
+}
+.project.show-project-content:hover{
+    background-color: rgb(255, 223, 186);
+}
+.project .content{
+    display: none;
+    flex-direction: column;
+}
+.project .content img{
+    margin: 0 auto;
+    height: 150px;
+    width: auto;
+}
+.show-project-content{
+    /* width: 500px; */
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 223, 186);
+    border: none;
+    /* pointer-events: none; */
+}
+.show-project-content .content{
+    display: flex;
+}
+.show-project-content h3{
+    font-size: 40px;
+    font-weight: 400;
+}
+.close{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: 1px solid black;
+    padding: 3px 10px;
+    /* pointer-events: auto; */
+}
+.talks-tile{
+    position: relative;
+}
+.talks-tile.grow .content.selected{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+}
+.iframe-container{
+    position: relative;
+}
+.talks-tile.grow .content.selected .iframe-container{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+}
+.talks-tile .iframe-container iframe{
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.talks-tile .content.selected iframe{
+    pointer-events: all;
+}
+.iframe-overlay{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height:100%;
+    background-color: rgba(0,0,0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 18px;
+}
+.hide{
+    display: none;
+}
+@media screen and (max-width: 1128px){
+    .first-name{
+        font-size: 100px;
+        line-height: 90px;
+    }
+    .last-name{
+        font-size: 65px;
+        line-height: 65px;
+    }
+    .profileimg{
+        width: 150px;
+        height: 150px;
+    }
+}
+@media screen and (max-width: 720px){
+    main{
+        padding: 120px 20px;
+    }
+    .tile-container{
+        flex-direction: column;
+    }
+    .tile h2{
+        font-size: 32px;
+    }
+    .landing-top{
+        align-items: flex-end;
+    }
+}
+@media screen and (max-width: 471px){
+    main{
+        padding: 120px 5px;
+    }
+    #landing{
+        padding: 5px;
+    }
+    .profileimg{
+        width: 100px;
+        height: 100px;
+    }    
+    #landing{
+        gap: 20px;
+    }
+}
+@media screen and (max-width: 387px){
+    .landing-top{
+        flex-direction: column;
+        align-items: center;
+    }
+
 }
