@@ -4,3 +4,6 @@
 [submodule "attendjs"]
 	path = attendjs
 	url = https://github.com/julianfl0w/attendjs
+[submodule "SoundJSON"]
+	path = SoundJSON
+	url = https://github.com/julianfl0w/SoundJSON
