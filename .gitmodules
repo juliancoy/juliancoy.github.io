@@ -4,9 +4,9 @@
 [submodule "attendjs"]
 	path = attendjs
 	url = https://github.com/julianfl0w/attendjs
-[submodule "clouddoc"]
-	path = clouddoc
-	url = git@github.com:julianfl0w/clouddoc.git
 [submodule "SoundJSON"]
 	path = SoundJSON
 	url = https://github.com/julianfl0w/SoundJSON
+[submodule "clouddoc"]
+	path = clouddoc
+	url = https://github.com/julianfl0w/clouddoc
