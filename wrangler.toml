@@ -1,24 +1,24 @@
-# Top-level configuration
-name = "my-worker"
-main = "src/index.js"
-compatibility_date = "2022-07-12"
-workers_dev = false
-route = { pattern = "example.org/*", zone_name = "example.org" }
-kv_namespaces = [
-  { binding = "<MY_NAMESPACE>", id = "<KV_ID>" }
-]
+# Pages project configuration
+pages_build_output_dir = "."  # Or specify your build output directory if different
 
-# Pages specific configuration
-pages_build_output_dir = "."
-
-# Exclusion for large files
+# Exclusions for large files
+[build.upload]
+format = "directory"
+dir = "."
+include = []
 exclude = [
   "clouddoc/scene.glb"
 ]
 
-[env.staging]
-name = "my-worker-staging"
-route = { pattern = "staging.example.org/*", zone_name = "example.org" }
-kv_namespaces = [
-  { binding = "<MY_NAMESPACE>", id = "<STAGING_KV_ID>" }
-]
+# If you need environment variables
+[env]
+# Add any environment variables here if needed
+# VAR_NAME = "value"
+
+# If you need preview-specific settings
+[env.preview]
+# Preview-specific settings go here
+
+# If you need production-specific settings
+[env.production]
+# Production-specific settings go here
