@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UltraTuner - WebGPU Audio Spectrogram</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>UltraTuner</h1>
+    
+    <div class="description">
+        <p>UltraTuner is a high-performance audio spectrogram analyzer powered by WebGPU. It processes audio files using parallel computing on your GPU for real-time frequency analysis.</p>
+    </div>
+    
+    <div class="webgpu-warning" id="webgpu_warning">
+        Your browser doesn't support WebGPU. Please use a compatible browser like Chrome 113+ or Edge 113+.
+    </div>
+    
+    <div id="drop_zone">
+        <p><strong>Drop your audio file here</strong></p>
+        <p>Supported formats: MP3, WAV, OGG, FLAC</p>
+    </div>
+        
+    <div class="status" id="status">Ready to analyze audio</div>
+    
+    <canvas id="spectrogram"></canvas>
+    
+    <div class="footer">
+        <p>UltraTuner uses WebGPU to perform fast Fourier transforms and spectral analysis directly on your GPU.</p>
+    </div>
+    
+    <script src="main.js" type="module"></script>
+</body>
+</html>
