@@ -8,7 +8,7 @@ pages_build_output_dir = "."
 [build]
 [build.upload]
 exclude = [
-  "clouddoc/scene.glb"
+  "clouddoc"
 ]
 
 # Environment-specific configurations (if needed)
