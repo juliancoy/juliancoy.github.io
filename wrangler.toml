@@ -1,24 +1,19 @@
-# Pages project configuration
-pages_build_output_dir = "."  # Or specify your build output directory if different
+# Required top-level name field for Pages
+name = "juliancoy-github-io"
+
+# Pages build configuration
+pages_build_output_dir = "."
 
 # Exclusions for large files
+[build]
 [build.upload]
-format = "directory"
-dir = "."
-include = []
 exclude = [
   "clouddoc/scene.glb"
 ]
 
-# If you need environment variables
-[env]
-# Add any environment variables here if needed
-# VAR_NAME = "value"
-
-# If you need preview-specific settings
+# Environment-specific configurations (if needed)
 [env.preview]
-# Preview-specific settings go here
+# Preview-specific settings
 
-# If you need production-specific settings
 [env.production]
-# Production-specific settings go here
+# Production-specific settings
