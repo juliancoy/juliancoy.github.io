@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BodyPix Webcam Blur</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/body-pix@2.2.0/dist/body-pix.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <div>Loading resources...</div>
+        </div>
+        <div id="status" class="status">Initializing...</div>
+        <video id="videoElement" autoplay muted playsinline></video>
+        <canvas id="outputCanvas"></canvas>
+        <div class="controls">
+            <button id="flipBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 7v10a4 4 0 0 1-4 4H3m18-17v5h-5M3 17V7a4 4 0 0 1 4-4h14m-18 17v-5h5"></path>
+                </svg>
+                Flip
+            </button>
+            <button id="fullscreenBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                </svg>
+                Fullscreen
+            </button>
+            <button id="blurBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+                Blur
+            </button>
+            <button id="thresholdBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+                Threshold
+            </button>
+            <button id="debugBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+                Debug
+            </button>
+            <button id="maskBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                Mask
+            </button>
+        </div>
+        <div id="debugInfo" style="display: none;">Debug info will appear here</div>
+    </div>
+    <script src="script.js"></script>
+    
+</body>
+</html>
