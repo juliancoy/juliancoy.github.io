@@ -16,6 +16,46 @@ let model = null;
 let isRunning = false;
 let showMaskOnly = true; // New flag to track mask view mode
 
+// Add variable to track controls visibility
+let controlsVisible = true;
+
+// Function to toggle controls visibility
+function toggleControls() {
+    controlsVisible = !controlsVisible;
+    const buttons = document.querySelectorAll('button');
+    const controlsContainer = document.getElementById('controls-container');
+    const instructionsElement = document.getElementById('instructions');
+    const sliderControls = document.querySelector('.slider-controls');
+    const controls = document.querySelector('.controls');
+    
+    // Hide all control elements
+    buttons.forEach(button => {
+        button.style.display = controlsVisible ? 'block' : 'none';
+    });
+    
+    if (controlsContainer) {
+        controlsContainer.style.display = controlsVisible ? 'block' : 'none';
+    }
+
+    if (sliderControls) {
+        sliderControls.style.display = controlsVisible ? 'block' : 'none';
+    }
+
+    if (controls) {
+        controls.style.display = controlsVisible ? 'block' : 'none';
+    }
+
+    // Make sure instructions are properly hidden/shown
+    if (instructionsElement) {
+        instructionsElement.style.opacity = controlsVisible ? '1' : '0';
+        instructionsElement.style.visibility = controlsVisible ? 'visible' : 'hidden';
+        instructionsElement.style.display = controlsVisible ? 'block' : 'none';
+        instructionsElement.textContent = controlsVisible ? 'Press C to hide controls' : 'Press C to show controls';
+    }
+    
+    updateStatus(`Controls ${controlsVisible ? 'shown' : 'hidden'}`);
+}
+
 // Add event listeners
 fullscreenBtn.addEventListener('click', () => {
     if (document.fullscreenElement) {
@@ -28,16 +68,6 @@ fullscreenBtn.addEventListener('click', () => {
 document.getElementById('flipBtn').addEventListener('click', () => {
     flipHorizontal = !flipHorizontal;
     updateStatus(`Camera ${flipHorizontal ? 'flipped' : 'unflipped'}`);
-});
-
-document.getElementById('blurBtn').addEventListener('click', () => {
-    blurAmount = (blurAmount >= 30) ? 3 : blurAmount + 5;
-    updateStatus(`Blur intensity: ${blurAmount}px`);
-});
-
-document.getElementById('thresholdBtn').addEventListener('click', () => {
-    segmentationThreshold = (segmentationThreshold >= 0.9) ? 0.1 : segmentationThreshold + 0.1;
-    updateStatus(`Segmentation Threshold: ${segmentationThreshold.toFixed(1)} (Higher = more aggressive segmentation)`);
 });
 
 // Add mask button functionality
@@ -56,13 +86,12 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'f') {
         flipHorizontal = !flipHorizontal;
         updateStatus(`Camera ${flipHorizontal ? 'flipped' : 'unflipped'}`);
-    } else if (event.key === 'b') {
-        blurAmount = (blurAmount >= 30) ? 3 : blurAmount + 6;
-        updateStatus(`Blur intensity: ${blurAmount}px`);
     } else if (event.key === 'm') {
         // Toggle mask with 'm' key
         showMaskOnly = !showMaskOnly;
         updateStatus(`Mask view: ${showMaskOnly ? 'ON' : 'OFF'}`);
+    } else if (event.key === 'c') {
+        toggleControls();
     }
 });
 
@@ -375,7 +404,49 @@ window.addEventListener('DOMContentLoaded', () => {
         if (outputCanvas) container.appendChild(outputCanvas);
         if (fullscreenBtn) container.appendChild(fullscreenBtn);
         
-        // Add missing elements
+        // Add controls container
+        const controlsContainer = document.createElement('div');
+        controlsContainer.id = 'controls-container';
+        controlsContainer.style.cssText = 'position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.7); padding: 10px; border-radius: 5px;';
+        
+        // Add blur slider
+        const blurControl = document.createElement('div');
+        blurControl.innerHTML = `
+            <label for="blurSlider" style="color: white; margin-right: 10px;">Blur: </label>
+            <input type="range" id="blurSlider" min="3" max="30" value="${blurAmount}" step="1" style="width: 150px;">
+            <span id="blurValue" style="color: white; margin-left: 10px;">${blurAmount}px</span>
+        `;
+        
+        // Add threshold slider
+        const thresholdControl = document.createElement('div');
+        thresholdControl.innerHTML = `
+            <label for="thresholdSlider" style="color: white; margin-right: 10px;">Threshold: </label>
+            <input type="range" id="thresholdSlider" min="0.01" max="0.99" value="${segmentationThreshold}" step="0.01" style="width: 150px;">
+            <span id="thresholdValue" style="color: white; margin-left: 10px;">${segmentationThreshold.toFixed(2)}</span>
+        `;
+        
+        controlsContainer.appendChild(blurControl);
+        controlsContainer.appendChild(thresholdControl);
+        container.appendChild(controlsContainer);
+        
+        // Add instructions element (moved inside container creation)
+        const instructions = document.createElement('div');
+        instructions.id = 'instructions';
+        instructions.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            z-index: 1000;
+        `;
+        instructions.textContent = 'Press C to hide controls';
+        container.appendChild(instructions); // Add to container instead of document.body
+        
+        // Add remaining elements
         if (!document.getElementById('status')) {
             const status = document.createElement('div');
             status.id = 'status';
@@ -392,6 +463,24 @@ window.addEventListener('DOMContentLoaded', () => {
             container.appendChild(loading);
         }
     }
+    
+    // Add slider event listeners
+    const blurSlider = document.getElementById('blurSlider');
+    const thresholdSlider = document.getElementById('thresholdSlider');
+    const blurValue = document.getElementById('blurValue');
+    const thresholdValue = document.getElementById('thresholdValue');
+    
+    blurSlider.addEventListener('input', (e) => {
+        blurAmount = parseInt(e.target.value);
+        blurValue.textContent = `${blurAmount}px`;
+        updateStatus(`Blur intensity: ${blurAmount}px`);
+    });
+    
+    thresholdSlider.addEventListener('input', (e) => {
+        segmentationThreshold = parseFloat(e.target.value);
+        thresholdValue.textContent = segmentationThreshold.toFixed(2);
+        updateStatus(`Segmentation Threshold: ${segmentationThreshold.toFixed(2)}`);
+    });
     
     // Start initialization
     setTimeout(init, 500);
