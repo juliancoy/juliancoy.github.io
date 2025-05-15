@@ -10,3 +10,6 @@
 [submodule "clouddoc"]
 	path = clouddoc
 	url = https://github.com/julianfl0w/clouddoc
+[submodule "pcad"]
+	path = pcad
+	url = https://github.com/juliancoy/pcad
