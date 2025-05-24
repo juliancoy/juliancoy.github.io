@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Julian Coy
+N:Coy;Julian;;;
+ORG:Code Collective
+TEL:410-258-7550
+EMAIL:julian@codecollective.us
+URL:https://juliancoy.us
+PHOTO;VALUE=URI:https://codecollective.us/images/julian.png
+END:VCARD
