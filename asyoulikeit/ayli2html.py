@@ -92,6 +92,12 @@ def extract_runs_with_comments(paragraph, comments):
                 filename = "effects/fanfare-1-276819.mp3"
             elif "cough" in comment_text.lower():
                 filename = "effects/man-death-scream-186763.mp3"
+            elif "sword out" in comment_text.lower():
+                filename = "effects/sword-sound-260274.mp3"
+            elif "sheath" in comment_text.lower():
+                filename = "effects/sword-re-sheathed-99334.mp3"
+            elif "bach" in comment_text.lower():
+                filename = "effects/Orchestral Suite No. 3 in D major, BWV 1068 - II. Air.mp3"
 
             if filename:
                 html_parts.append(f'<button class="sound_button" data-sound="{filename}" onclick="toggleSound(this)">[{comment_text}]</button>')
@@ -100,6 +106,17 @@ def extract_runs_with_comments(paragraph, comments):
         else:
             html_parts.append(html_escape_module.escape(text))
     return ''.join(html_parts)
+
+def get_character_color(name, color_map):
+    # Use a fixed palette or randomize
+    palette = [
+        "#e6194B", "#3cb44b", "#ffe119", "#4363d8", "#f58231",
+        "#911eb4", "#46f0f0", "#f032e6", "#bcf60c", "#fabebe"
+    ]
+    if name not in color_map:
+        color_map[name] = palette[len(color_map) % len(palette)]
+    return color_map[name]
+
 
 def generate_html(doc, comments):
     html_output = ['''<html>
@@ -117,7 +134,7 @@ def generate_html(doc, comments):
     content_open = False
 
     for para in doc.paragraphs:
-        style = para.style.name
+        style = para.style.name 
         para_text = para.text.strip()
 
         if not para_text:
@@ -170,7 +187,7 @@ def generate_html(doc, comments):
     if content_open:
         html_output.append('</div>')
 
-    html_output.extend(['</div>', '</body></html>'])
+    html_output.extend(['</div>', '<script src="bars.js"></script></body></html>'])
     return '\n'.join(html_output)
 
 if __name__ == "__main__":
@@ -184,6 +201,9 @@ if __name__ == "__main__":
 
     doc, comments = load_docx_with_comments(input_path)
     html_data = generate_html(doc, comments)
+    html_data = html_data.replace("ROSALIND,", "ROSALIND")
+    html_data = html_data.replace("PHOEBE,", "PHOEBE")
+    html_data = html_data.replace("CELIA,", "CELIA")
 
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(html_data)
