@@ -102,6 +102,8 @@ def extract_runs_with_comments(paragraph, comments):
                 filename = "./effects/dontfearthereaper.mp3"
             elif "bald" in comment_text.lower():
                 filename = "./effects/nightonbaldmountain.mp3"
+            elif "island" in comment_text.lower():
+                filename = "./effects/greenisland_.mp3"
 
 
             if filename:
