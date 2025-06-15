@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Check if screen is mobile (less than 768px wide)
+    if (window.innerWidth < 768) return;
+    
     const overlay = document.createElement("div");
     overlay.className = "speaker-overlay";
     document.body.appendChild(overlay);
