@@ -51,53 +51,58 @@ def extract_runs_with_comments(paragraph, comments):
             filename = None
             
             if "crowd cheer" in comment_text.lower():
-                filename = "effects/crowd-cheer-canon.mp3"
+                filename = "/effects/crowd-cheer-canon.mp3"
             elif "crowd boo" in comment_text.lower():
-                filename = "effects/crowd-boo-canon.mp3"
+                filename = "/effects/crowd-boo-canon.mp3"
             elif "aww" in comment_text.lower():
-                filename = "effects/crowd-aww.mp3"
+                filename = "/effects/crowd-aww.mp3"
             elif "circus" in comment_text.lower():
-                filename = "effects/circus-canon.mp3"
+                filename = "/effects/circus-canon.mp3"
             elif "oof" in comment_text.lower():
-                filename = "effects/gasp_SJHmiqB.mp3"
+                filename = "/effects/gasp_SJHmiqB.mp3"
                 html_parts.append(f'<button class="sound_button" data-sound="{filename}" onclick="toggleSound(this)">[gasp]</button>')
-                filename = "effects/gottahurt.mp3"
+                filename = "/effects/gottahurt.mp3"
             elif "kill" in comment_text.lower():
-                filename = "effects/they'r tryin' to kill u!!.mp3"
+                filename = "/effects/they'r tryin' to kill u!!.mp3"
             elif "bell" in comment_text.lower():
-                filename = "effects/wwe-bell.mp3"
+                filename = "/effects/wwe-bell.mp3"
             elif "evil" in comment_text.lower():
-                filename = "effects/joker-laughing.mp3"
+                filename = "/effects/joker-laughing.mp3"
             elif "picnic" in comment_text.lower():
-                filename = "effects/morningmood.mp3"
+                filename = "/effects/morningmood.mp3"
             elif "voiceover of someone" in comment_text.lower():
-                filename = "effects/sohadyouneed.mp3"
+                filename = "/effects/sohadyouneed.mp3"
             elif "casablanca" in comment_text.lower():
-                filename = "effects/Casablanca - As Time Goes By.mp3"
+                filename = "/effects/Casablanca - As Time Goes By.mp3"
             elif "snake" in comment_text.lower():
-                filename = "effects/rattlesnake_sound.mp3"
+                filename = "/effects/rattlesnake_sound.mp3"
                 html_parts.append(f'<button class="sound_button" data-sound="{filename}" onclick="toggleSound(this)">rattlesnake</button>')
-                filename = "effects/im-a-snake-mp3cut.mp3"
+                filename = "/effects/im-a-snake-mp3cut.mp3"
             elif "lion" in comment_text.lower():
-                filename = "effects/lion-roar-sound-effect.mp3"
+                filename = "/effects/lion-roar-sound-effect.mp3"
             elif "sexy" in comment_text.lower():
-                filename = "effects/You Sexy Thing.mp3"
+                filename = "/effects/You Sexy Thing.mp3"
             elif "wedding" in comment_text.lower():
-                filename = "effects/Mendelssohn-wedding-march.mp3"
+                filename = "/effects/Mendelssohn-wedding-march.mp3"
             elif "conch" in comment_text.lower():
-                filename = "effects/conch-middle-00-94462.mp3"
+                filename = "/effects/conch-middle-00-94462.mp3"
             elif "narrator" in comment_text.lower():
-                filename = "effects/AntonioVivaldi_Spring.mp3"
+                filename = "/effects/AntonioVivaldi_Spring.mp3"
             elif "horn" in comment_text.lower():
-                filename = "effects/fanfare-1-276819.mp3"
+                filename = "/effects/fanfare-1-276819.mp3"
             elif "cough" in comment_text.lower():
-                filename = "effects/man-death-scream-186763.mp3"
+                filename = "/effects/man-death-scream-186763.mp3"
             elif "sword out" in comment_text.lower():
-                filename = "effects/sword-sound-260274.mp3"
+                filename = "/effects/sword-sound-260274.mp3"
             elif "sheath" in comment_text.lower():
-                filename = "effects/sword-re-sheathed-99334.mp3"
+                filename = "/effects/sword-re-sheathed-99334.mp3"
             elif "bach" in comment_text.lower():
-                filename = "effects/Orchestral Suite No. 3 in D major, BWV 1068 - II. Air.mp3"
+                filename = "/effects/Orchestral Suite No. 3 in D major, BWV 1068 - II. Air.mp3"
+            elif "fear" in comment_text.lower():
+                filename = "/effects/dontfearthereaper.mp3"
+            elif "bald" in comment_text.lower():
+                filename = "/effects/nightonbaldmountain.mp3"
+
 
             if filename:
                 html_parts.append(f'<button class="sound_button" data-sound="{filename}" onclick="toggleSound(this)">[{comment_text}]</button>')
