@@ -5,92 +5,111 @@ OUTPUT_FILE="final_output.wav"
 NORMALIZED_FILE="normalized_$OUTPUT_FILE"
 SAMPLE_RATE=48000
 
-### --- Function: Safe Module Unload ---
-unload_if_loaded() {
-  if [[ $1 =~ ^[0-9]+$ ]]; then
-    pactl unload-module "$1" 2>/dev/null
-  fi
-}
-
+### --- Function: Cleanup ---
 cleanup() {
   echo -e "\n🧹 Cleaning up... Duration: $((SECONDS / 60))m $((SECONDS % 60))s"
-  unload_if_loaded "$LOOP_ID"
-  unload_if_loaded "$RNN_ID"
-  unload_if_loaded "$NULL_SINK_ID"
-  echo "🔊 Normalizing volume..."
-  sox "$OUTPUT_FILE" "$NORMALIZED_FILE" gain -n
-  echo "✅ Done! Output saved to $NORMALIZED_FILE"
+  
+  # Only normalize if output file exists and has content
+  if [[ -f "$OUTPUT_FILE" && -s "$OUTPUT_FILE" ]]; then
+    echo "🔊 Normalizing volume..."
+    if command -v sox &>/dev/null; then
+      sox "$OUTPUT_FILE" "$NORMALIZED_FILE" gain -n 2>/dev/null || \
+        echo "⚠️ Normalization failed - copying original file"
+      [[ -f "$NORMALIZED_FILE" ]] || cp "$OUTPUT_FILE" "$NORMALIZED_FILE"
+    else
+      echo "⚠️ SoX not available - skipping normalization"
+      cp "$OUTPUT_FILE" "$NORMALIZED_FILE"
+    fi
+    echo "✅ Final output saved to $NORMALIZED_FILE"
+  else
+    echo "⚠️ No audio was recorded - output file missing or empty"
+  fi
 }
 
 trap cleanup EXIT
 SECONDS=0
 
-### --- Verify PulseAudio ---
-if ! pactl info &>/dev/null; then
-  echo "❌ PulseAudio not running. Start it with: pulseaudio --start"
+### --- Verify PipeWire ---
+if ! command -v pw-cli &>/dev/null || ! pw-cli info &>/dev/null; then
+  echo "❌ PipeWire not running or pw-cli not available."
+  echo "   Try: systemctl --user start pipewire pipewire-pulse"
   exit 1
 fi
 
-### --- Get audio devices ---
-MIC_SOURCE=$(pactl list short sources | grep input | grep -v monitor | awk '{print $2}' | head -n1)
-SPEAKER_SINK=$(pactl list short sinks | grep -v monitor | awk '{print $2}' | head -n1)
+### --- Get default audio devices ---
+echo "🔍 Detecting audio devices..."
+MIC_SOURCE=$(pw-cli list-objects | grep -A1 "alsa_input" | grep -A1 "node.name" | grep -oP 'node.name = "\K[^"]+' | head -n1)
+DEFAULT_OUTPUT=$(pw-cli list-objects | grep -A1 "alsa_output" | grep -A1 "node.name" | grep -oP 'node.name = "\K[^"]+' | head -n1)
 
-if [ -z "$MIC_SOURCE" ] || [ -z "$SPEAKER_SINK" ]; then
-  echo "❌ Could not detect mic or speaker. Plug in devices and try again."
+# Alternative method using wpctl (WirePlumber)
+if [[ -z "$MIC_SOURCE" ]] && command -v wpctl &>/dev/null; then
+  MIC_SOURCE=$(wpctl status | grep -A1 "Sources" | grep "input" | head -n1 | awk '{print $2}')
+  DEFAULT_OUTPUT=$(wpctl status | grep -A1 "Sinks" | grep "output" | head -n1 | awk '{print $2}')
+fi
+
+if [[ -z "$MIC_SOURCE" ]]; then
+  echo "❌ Could not detect microphone. Options:"
+  echo "1. Check your microphone is properly connected"
+  echo "2. Try these commands to debug:"
+  echo "   pw-cli list-objects | grep -A3 Audio/Source"
+  echo "   wpctl status"
+  echo "3. Try setting manually with: pavucontrol"
   exit 1
 fi
 
-echo "🎤 Detected mic: $MIC_SOURCE"
-echo "🔈 Using speaker: $SPEAKER_SINK"
+echo "🎤 Using microphone: $MIC_SOURCE"
+echo "🔈 System output: ${DEFAULT_OUTPUT:-Not detected}"
 
-### --- Check if mic is mono or stereo ---
-CHANNELS=$(pactl list sources | awk -v mic="$MIC_SOURCE" '
-  $1 == "Source" && $2 ~ mic { found = 1 }
-  found && /Channels:/ { print $2; exit }
-')
-
-if [ "$CHANNELS" == "1" ]; then
+### --- Check audio channels ---
+CHANNELS=$(pw-cli dump-object "$MIC_SOURCE" | grep "audio.channel" | wc -l)
+if [[ "$CHANNELS" -eq 1 ]]; then
   RNNOISE_LABEL="noise_suppressor_mono"
-  echo "🔍 Mic is mono - using mono noise suppression"
+  echo "🔍 Mic appears to be mono"
 else
   RNNOISE_LABEL="noise_suppressor_stereo"
-  echo "🔍 Mic is stereo - using stereo noise suppression"
   CHANNELS=2
+  echo "🔍 Mic appears to be stereo"
 fi
 
 ### --- Create processing pipeline ---
 echo "🔄 Creating audio processing pipeline..."
 
-# Create null sink
-NULL_SINK_ID=$(pactl load-module module-null-sink \
-  sink_name=voice_processing \
-  sink_properties=device.description="Voice_Processing")
+# Create virtual sink for processed audio
+VIRTUAL_SINK=$(pw-cli create-node adapter \
+  factory.name=support.null-audio-sink \
+  media.class=Audio/Sink \
+  object.linger=true \
+  node.name="voice_processing_sink" \
+  monitor.channel-volumes=true | grep -oP 'id \K\d+')
 
-# Load RNNoise LADSPA plugin
-RNN_ID=$(pactl load-module module-ladspa-source \
-  source_name=mic_denoised \
-  master="$MIC_SOURCE" \
-  plugin=rnnoise_ladspa \
-  label="$RNNOISE_LABEL" \
-  control=1)
+# Create noise suppression filter
+FILTER_NODE=$(pw-cli create-node adapter \
+  factory.name=support.null-audio-sink \
+  media.class=Audio/Source/Virtual \
+  object.linger=true \
+  node.name="voice_processing_filter" | grep -oP 'id \K\d+')
 
-# Loopback denoised mic to null sink (for recording) and optionally to speaker
-LOOP_ID=$(pactl load-module module-loopback \
-  source=mic_denoised.monitor \
-  sink=voice_processing \
-  latency_msec=1)
+pw-cli set-param "$FILTER_NODE" ladspa.plugin=rnnoise_ladspa
+pw-cli set-param "$FILTER_NODE" ladspa.label="$RNNOISE_LABEL"
+
+# Connect microphone to filter
+pw-cli connect "$MIC_SOURCE" "$FILTER_NODE"
+
+# Connect filter to virtual sink
+pw-cli connect "$FILTER_NODE" "$VIRTUAL_SINK"
 
 ### --- Verify setup ---
-if [ -z "$NULL_SINK_ID" ] || [ -z "$RNN_ID" ] || [ -z "$LOOP_ID" ]; then
-  echo "❌ Failed to create audio pipeline:"
-  [ -z "$NULL_SINK_ID" ] && echo " - Could not create null sink"
-  [ -z "$RNN_ID" ] && echo " - Could not load RNNoise (is it installed?)"
-  [ -z "$LOOP_ID" ] && echo " - Could not create loopback"
-  cleanup
+if [[ -z "$VIRTUAL_SINK" || -z "$FILTER_NODE" ]]; then
+  echo "❌ Failed to create audio pipeline"
   exit 1
 fi
 
+echo "⏺️  Everything is ready - starting recording in 3 seconds..."
+sleep 3
+
 ### --- Start recording ---
 echo -e "\n🎙️  Recording to $OUTPUT_FILE (Press Ctrl+C to stop)..."
-parec -d voice_processing.monitor --format=s16le --rate=$SAMPLE_RATE --channels=$CHANNELS | \
-  sox -t raw -r $SAMPLE_RATE -e signed -b 16 -c $CHANNELS - "$OUTPUT_FILE"
+pw-record --target="$VIRTUAL_SINK" --rate=$SAMPLE_RATE --channels=$CHANNELS "$OUTPUT_FILE" || {
+  echo "⚠️ Recording failed - check audio permissions and device availability"
+  exit 1
+}
