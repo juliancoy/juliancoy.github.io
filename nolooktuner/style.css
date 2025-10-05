@@ -1,0 +1,113 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: #fafafa;
+  margin: 0;
+  padding: 1rem;
+  line-height: 1.6;
+}
+
+.wrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.muted {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+button, label {
+  cursor: pointer;
+  border: none;
+  font: inherit;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+button.primary {
+  background: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+button.primary:hover {
+  background: #45a049;
+}
+
+label.secondary {
+  background: #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+label.secondary:hover {
+  background: #d0d0d0;
+}
+
+.panel {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 1.5rem;
+}
+
+.note {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.stat {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.stat strong {
+  display: inline-block;
+  min-width: 100px;
+}
+
+.live {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+details summary {
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+details ul {
+  margin-top: 0.5rem;
+}
+
+kbd {
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: 0.9em;
+  font-family: monospace;
+}
